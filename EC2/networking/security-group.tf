@@ -11,7 +11,7 @@ resource "aws_vpc_security_group_ingress_rule" "ingress_main" {
   from_port         = 22
   to_port           = 22
   ip_protocol       = "tcp"
-  cidr_ipv4         = [var.user_ip]
+  cidr_ipv4         = var.user_ip
 }
 
 resource "aws_vpc_security_group_egress_rule" "egress_main" {
