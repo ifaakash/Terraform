@@ -37,7 +37,7 @@ variable "default_tags" {
   description = "Default tags for resources deployment"
   type        = map(string)
   default = {
-    "Project" = "QuickSpin"
-    "Created" = "ifaakash"
+    "Project"    = "QuickSpin"
+    "Created_by" = "ifaakash"
   }
 }

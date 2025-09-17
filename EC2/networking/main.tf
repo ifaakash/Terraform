@@ -7,7 +7,7 @@ resource "aws_vpc" "main" {
 }
 
 # Deploy a public subnet
-resource "aws_subnet" "main" {
+resource "aws_subnet" "public" {
   cidr_block = var.subnet_cidr
   vpc_id     = aws_vpc.main.owner_id
   tags       = merge({ "Name" : "${var.prefix}-public-subnet" }, var.default_tags)

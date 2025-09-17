@@ -1,4 +1,4 @@
-resource "aws_security_group" "main" {
+resource "aws_security_group" "public" {
   name        = "${var.prefix}-sg"
   description = "Security group for EC2 instance"
   vpc_id      = aws_vpc.main.id
