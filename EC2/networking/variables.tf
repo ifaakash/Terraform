@@ -13,6 +13,11 @@ variable "subnet_cidr" {
   type        = string
 }
 
+variable "is_public" {
+  description = "Boolean indicating whether the instance is public or private"
+  type        = bool
+}
+
 variable "enable_dns_hostnames" {
   description = "Enable DNS hostnames for the VPC"
   type        = bool
