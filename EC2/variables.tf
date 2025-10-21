@@ -15,10 +15,10 @@ variable "ami_id" {
   type        = string
 }
 
-variable "is_public" {
-  description = "Boolean indicating whether the instance is public or private"
-  type        = bool
-}
+# variable "is_public" {
+#   description = "Boolean indicating whether the instance is public or private"
+#   type        = bool
+# }
 
 variable "network_interface_id" {
   description = "Network interface ID for EC2 instance"
