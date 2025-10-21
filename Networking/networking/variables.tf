@@ -8,14 +8,14 @@ variable "vpc_cidr" {
   type        = string
 }
 
-variable "subnet_cidr" {
+variable "public_subnet_cidr" {
   description = "CIDR block for Public subnet"
   type        = string
 }
 
-variable "is_public" {
-  description = "Boolean indicating whether the instance is public or private"
-  type        = bool
+variable "private_subnet_cidr" {
+  description = "CIDR block for Private subnet"
+  type        = string
 }
 
 variable "enable_dns_hostnames" {

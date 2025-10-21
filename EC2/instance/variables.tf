@@ -23,11 +23,6 @@ variable "security_group_ids" {
   type        = list(string)
 }
 
-# variable "key_pair_name" {
-#   description = "Key pair name for EC2 instance"
-#   type        = string
-# }
-
 variable "default_tags" {
   description = "Default tags for resources deployment"
   type        = map(string)
