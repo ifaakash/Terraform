@@ -1,7 +1,11 @@
+##################### PREFIX #####################
+
 variable "prefix" {
   description = "Prefix for resource names"
   type        = string
 }
+
+##################### INSTANCE #####################
 
 variable "instance_type" {
   description = "Instance type for EC2 instance"
@@ -13,6 +17,20 @@ variable "ami_id" {
   type        = string
 }
 
+##################### IAM #####################
+
+variable "role_name" {
+  description = "Name of IAM role to be attachecd with the EC2 instance"
+  type        = string
+}
+
+variable "instance_profile_name" {
+  description = "Name of IAM Instance profile to be attachecd with the EC2 instance"
+  type        = string
+}
+
+##################### NETWORKING #####################
+
 variable "network_interface_id" {
   description = "Network interface ID for EC2 instance"
   type        = string
@@ -22,6 +40,8 @@ variable "security_group_ids" {
   description = "Security group IDs for EC2 instance"
   type        = list(string)
 }
+
+##################### DEFAULT TAGS #####################
 
 variable "default_tags" {
   description = "Default tags for resources deployment"
