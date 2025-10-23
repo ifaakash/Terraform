@@ -15,17 +15,7 @@ variable "ami_id" {
   type        = string
 }
 
-# variable "is_public" {
-#   description = "Boolean indicating whether the instance is public or private"
-#   type        = bool
-# }
-
 ##################### IAM #####################
-
-variable "role_name" {
-  description = "Name of IAM role to be attachecd with the EC2 instance"
-  type        = string
-}
 
 variable "instance_profile_name" {
   description = "Name of IAM Instance profile to be attachecd with the EC2 instance"
