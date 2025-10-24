@@ -8,9 +8,10 @@ resource "aws_vpc" "main" {
 
 # Deploy a public subnet
 resource "aws_subnet" "public" {
-  cidr_block = var.public_subnet_cidr
-  vpc_id     = aws_vpc.main.id
-  tags       = merge({ "Name" : "${var.prefix}-public-subnet" }, var.default_tags)
+  cidr_block              = var.public_subnet_cidr
+  vpc_id                  = aws_vpc.main.id
+  map_public_ip_on_launch = true # Assign a public IP to instances launched in this subnet
+  tags                    = merge({ "Name" : "${var.prefix}-public-subnet" }, var.default_tags)
 }
 
 # Deploy a public subnet
@@ -42,4 +43,9 @@ resource "aws_route_table" "example" {
     gateway_id = "local"
   }
   tags = merge({ "Name" : "${var.prefix}-route-tables" }, var.default_tags)
+}
+
+resource "azurerm_subnet_route_table_association" "igw_subnet_aasociation" {
+  subnet_id      = aws_subnet.public.id
+  route_table_id = aws_route_table.example.id
 }
