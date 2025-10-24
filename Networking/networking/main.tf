@@ -45,7 +45,7 @@ resource "aws_route_table" "example" {
   tags = merge({ "Name" : "${var.prefix}-route-tables" }, var.default_tags)
 }
 
-resource "azurerm_subnet_route_table_association" "igw_subnet_aasociation" {
+resource "aws_route_table_association" "igw_subnet_aasociation" {
   subnet_id      = aws_subnet.public.id
   route_table_id = aws_route_table.example.id
 }
