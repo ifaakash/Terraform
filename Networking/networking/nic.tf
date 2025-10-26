@@ -13,8 +13,9 @@ resource "aws_network_interface" "private" {
   tags            = merge({ "Name" : "${var.prefix}-private-nic" }, var.default_tags)
 }
 
-# Attach a elastic IP to public Instace
+# Attach a elastic IP to public Instace ( will not be attached to anything )
+# This EIP will be utilised by the NAT Gateway
 resource "aws_eip" "one" {
-  network_interface = aws_network_interface.public.id
-  tags              = merge({ "Name" : "${var.prefix}-eip" }, var.default_tags)
+  tags = merge({ "Name" : "${var.prefix}-eip" }, var.default_tags)
 }
+# network_interface = aws_network_interface.public.id
