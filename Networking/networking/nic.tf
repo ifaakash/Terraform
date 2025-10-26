@@ -13,8 +13,8 @@ resource "aws_network_interface" "private" {
   tags            = merge({ "Name" : "${var.prefix}-private-nic" }, var.default_tags)
 }
 
-# # Attach a elastic IP to public Instace
-# resource "aws_eip" "one" {
-#   network_interface = aws_network_interface.public.id
-#   tags              = merge({ "Name" : "${var.prefix}-eip" }, var.default_tags)
-# }
+# Attach a elastic IP to public Instace
+resource "aws_eip" "one" {
+  network_interface = aws_network_interface.public.id
+  tags              = merge({ "Name" : "${var.prefix}-eip" }, var.default_tags)
+}

@@ -27,6 +27,14 @@ resource "aws_internet_gateway" "main" {
   tags   = merge({ "Name" : "${var.prefix}-igw" }, var.default_tags)
 }
 
+# NAT gateway for routing traffic from private subnet to Internet
+resource "aws_nat_gateway" "main" {
+  subnet_id     = aws_subnet.public.id
+  allocation_id = aws_eip.one.id # Elastic IP association
+  tags          = merge({ "Name" = "${var.prefix}-nat" }, var.default_tags)
+  depends_on    = [aws_internet_gateway.main, aws_eip.one]
+}
+
 # Create routes for traffic from VPC, redirected to Internet
 resource "aws_route_table" "example" {
   vpc_id = aws_vpc.main.id
@@ -42,10 +50,11 @@ resource "aws_route_table" "example" {
     cidr_block = aws_vpc.main.cidr_block
     gateway_id = "local"
   }
-  tags = merge({ "Name" : "${var.prefix}-route-tables" }, var.default_tags)
+
+  tags = merge({ "Name" : "${var.prefix}-public-rt" }, var.default_tags)
 }
 
-resource "aws_route_table_association" "igw_subnet_aasociation" {
+resource "aws_route_table_association" "public_subnet_aasociation" {
   subnet_id      = aws_subnet.public.id
   route_table_id = aws_route_table.example.id
 }
