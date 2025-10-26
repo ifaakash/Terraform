@@ -6,5 +6,5 @@ resource "aws_instance" "example" {
   }
   iam_instance_profile = var.instance_profile_name
   force_destroy        = true
-  tags                 = merge({ "Name" : "${var.prefix}-instance" }, var.default_tags)
+  tags                 = var.default_tags
 }
