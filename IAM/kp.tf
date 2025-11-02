@@ -10,7 +10,7 @@ resource "tls_private_key" "tls" {
 
 resource "aws_key_pair" "kp" {
   key_name   = var.kp_name
-  public_key = tls_private_key.tls.private_key_openssh
+  public_key = tls_private_key.tls.public_key_openssh
 }
 
 resource "aws_ssm_parameter" "kp_ssm" {
