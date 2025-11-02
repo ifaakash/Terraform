@@ -16,3 +16,10 @@ variable "kp_name" {
   description = "Name of the key pair for logging to Instance ( being used by Ansible )"
   type        = string
 }
+
+##################### SSM PARAMETERS #####################
+
+variable "kp_ssm_parameter_name" {
+  description = "SSM Parameter that holds the pem file for Key Pair"
+  type        = string
+}

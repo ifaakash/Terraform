@@ -12,3 +12,9 @@ resource "aws_key_pair" "kp" {
   key_name   = var.kp_name
   public_key = tls_private_key.tls.private_key_openssh
 }
+
+resource "aws_ssm_parameter" "kp_ssm" {
+  name  = var.kp_ssm_parameter_name
+  type  = "SecureString"
+  value = tls_private_key.tls.private_key_pem
+}
