@@ -5,11 +5,6 @@ variable "network_interface_id" {
   type        = string
 }
 
-variable "security_group_ids" {
-  description = "Security group IDs for EC2 instance"
-  type        = list(string)
-}
-
 variable "instance_profile_name" {
   description = "Name of IAM Instance profile to be attachecd with the EC2 instance"
   type        = string
