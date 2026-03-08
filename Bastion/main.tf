@@ -1,5 +1,5 @@
 resource "aws_instance" "bastion" {
-  ami           = data.aws_ssm_parameter.al2023_latest.id
+  ami           = data.aws_ssm_parameter.al2023_latest.value
   instance_type = "t3.micro"
   primary_network_interface {
     network_interface_id = var.network_interface_id
