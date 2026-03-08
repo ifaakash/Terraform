@@ -55,6 +55,8 @@ resource "aws_route_table" "example" {
 }
 
 resource "aws_route_table_association" "public_subnet_aasociation" {
+
+  # Attach public subnet with internet gateway
   subnet_id      = aws_subnet.public.id
   route_table_id = aws_route_table.example.id
 }
