@@ -43,10 +43,10 @@ resource "azurerm_network_security_rule" "allow_ssh" {
   direction                   = "Inbound"
   access                      = "Allow"
   protocol                    = "Tcp"
-  source_port_range          = "*"
-  destination_port_range     = "22"
-  source_address_prefix      = "49.121.9.60/32"
-  destination_address_prefix = "*"
+  source_port_range           = "*"
+  destination_port_range      = "22"
+  source_address_prefix       = "49.121.9.60/32"
+  destination_address_prefix  = "*"
   resource_group_name         = azurerm_resource_group.rg.name
   network_security_group_name = azurerm_network_security_group.public_nsg.name
 }
@@ -58,10 +58,10 @@ resource "azurerm_network_security_rule" "block_internet" {
   direction                   = "Outbound"
   access                      = "Deny"
   protocol                    = "*"
-  source_port_range          = "*"
-  destination_port_range     = "*"
-  source_address_prefix      = "*"
-  destination_address_prefix = "Internet" # Blocks only public internet, allows internal VNet traffic
+  source_port_range           = "*"
+  destination_port_range      = "*"
+  source_address_prefix       = "*"
+  destination_address_prefix  = "Internet" # Blocks only public internet, allows internal VNet traffic
   resource_group_name         = azurerm_resource_group.rg.name
   network_security_group_name = azurerm_network_security_group.private_nsg.name
 }
