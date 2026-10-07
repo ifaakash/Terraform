@@ -29,6 +29,29 @@ resource "azurerm_network_security_group" "private_nsg" {
   tags                = local.default_tags
 }
 
+
+resource "azurerm_network_security_group" "public_nsg" {
+  name                = "${local.project}-public-nsg"
+  location            = local.location
+  resource_group_name = azurerm_resource_group.rg.name
+  tags                = local.default_tags
+}
+
+resource "azurerm_network_security_rule" "allow_ssh" {
+  name                        = "allowSSHfromOwnIp"
+  priority                    = 100
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range          = "*"
+  destination_port_range     = "22"
+  source_address_prefix      = "49.121.9.60/32"
+  destination_address_prefix = "*"
+  resource_group_name         = azurerm_resource_group.rg.name
+  network_security_group_name = azurerm_network_security_group.public_nsg.name
+}
+
+
 resource "azurerm_network_security_rule" "block_internet" {
   name                        = "blockInternetAccess"
   priority                    = 100
@@ -40,7 +63,7 @@ resource "azurerm_network_security_rule" "block_internet" {
   source_address_prefix      = "*"
   destination_address_prefix = "Internet" # Blocks only public internet, allows internal VNet traffic
   resource_group_name         = azurerm_resource_group.rg.name
-  network_security_group_name = azurerm_network_security_group.nsg.name
+  network_security_group_name = azurerm_network_security_group.private_nsg.name
 }
 
 resource "azurerm_subnet_network_security_group_association" "private_nsg_assoc" {
@@ -66,9 +89,4 @@ resource "azurerm_route" "drop_internet" {
 resource "azurerm_subnet_route_table_association" "private_rt_assoc" {
   subnet_id      = azurerm_subnet.private.id
   route_table_id = azurerm_route_table.private_rt.id
-}
-
-resource "azurerm_subnet_route_table_association" "rt_association" {
-  subnet_id      = azurerm_subnet.private.id
-  route_table_id = azurerm_route_table.rt.id
 }
