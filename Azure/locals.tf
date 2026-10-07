@@ -5,5 +5,5 @@ locals {
     IsTerraformManaged = "true"
   }
   project  = "quickspin"
-  location = "West Europe"
+  location = "East US 2"
 }
