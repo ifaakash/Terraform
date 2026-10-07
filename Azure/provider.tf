@@ -9,5 +9,8 @@ terraform {
 
 
 provider "azurerm" {
-	features{}
+  features {}
 }
+
+
+# azurerm has no default tags, unlike AWS; default tags are in locals.tf
