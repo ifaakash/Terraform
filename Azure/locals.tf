@@ -4,4 +4,5 @@ locals {
     Owner            = "ifaakash"
     TerraformManaged = "true"
   }
+  project = "quickspin"
 }
