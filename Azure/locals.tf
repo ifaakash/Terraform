@@ -2,7 +2,7 @@ locals {
   default_tags = {
     Environment      = "dev"
     Owner            = "ifaakash"
-    TerraformManaged = "true"
+    IsTerraformManaged = "true"
   }
   project = "quickspin"
 }
