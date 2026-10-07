@@ -14,3 +14,14 @@ provider "azurerm" {
 
 
 # azurerm has no default tags, unlike AWS; default tags are in locals.tf
+#provider "aws" {
+#  region = "ap-south-1"
+
+#  default_tags {
+#    tags = {
+#      Environment = "dev"
+#      ManagedBy   = "terraform"
+#      Owner       = "aakash"
+#    }
+#  }
+#}
