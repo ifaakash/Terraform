@@ -4,5 +4,6 @@ locals {
     Owner              = "ifaakash"
     IsTerraformManaged = "true"
   }
-  project = "quickspin"
+  project  = "quickspin"
+  location = "West Europe"
 }
