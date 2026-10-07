@@ -11,7 +11,7 @@ resource "azurerm_subnet" "public" {
   name                 = "${local.project}-public-subnet"
   resource_group_name  = azurerm_resource_group.rg.id
   virtual_network_name = azurerm_virtual_network.vnet.id
-  address_prefixes     = ["10.0.1.0/24"]
+  address_prefixes     = [var.public_subnet_address_space]
 }
 
 
@@ -19,7 +19,7 @@ resource "azurerm_subnet" "private" {
   name                 = "${local.project}-private-subnet"
   resource_group_name  = azurerm_resource_group.rg.id
   virtual_network_name = azurerm_virtual_network.vnet.id
-  address_prefixes     = ["10.0.1.0/24"]
+  address_prefixes     = [var.private_subnet_address_space]
 }
 
 
