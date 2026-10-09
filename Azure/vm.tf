@@ -3,7 +3,7 @@ resource "azurerm_virtual_machine" "public" {
   location              = local.location
   resource_group_name   = azurerm_resource_group.rg.name
   network_interface_ids = [azurerm_network_interface.public.id]
-  vm_size               = "Standard_B1s"
+  vm_size               = local.size
 
   delete_os_disk_on_termination    = true
   delete_data_disks_on_termination = true
@@ -11,7 +11,7 @@ resource "azurerm_virtual_machine" "public" {
   storage_image_reference {
     publisher = "Canonical"
     offer     = "0001-com-ubuntu-server-jammy"
-    sku       = "22_04-lts"
+    sku       = "22_04-lts-arm64"
     version   = "latest"
   }
   zones = ["1"]
