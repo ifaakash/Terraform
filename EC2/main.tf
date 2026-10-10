@@ -3,6 +3,7 @@ module "instance" {
   prefix                = var.prefix
   ami_id                = var.ami_id
   instance_type         = var.instance_type
+  avaialability_zone    = var.availability_zone
   network_interface_id  = var.network_interface_id
   security_group_ids    = var.security_group_ids
   instance_profile_name = var.instance_profile_name
