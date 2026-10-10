@@ -5,6 +5,6 @@ locals {
     IsTerraformManaged = "true"
   }
   project  = "quickspin"
-  location = "Australia Central"
-  size     = "Standard_B2pls_v2"
+  location = "Australia Southeast"
+  size     = "Standard_D2s_v4"
 }
