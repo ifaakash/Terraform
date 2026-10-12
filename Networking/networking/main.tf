@@ -10,15 +10,17 @@ resource "aws_vpc" "main" {
 resource "aws_subnet" "public" {
   cidr_block              = var.public_subnet_cidr
   vpc_id                  = aws_vpc.main.id
+  availability_zone       = "${var.region}a"
   map_public_ip_on_launch = true # Assign a public IP to instances launched in this subnet
   tags                    = merge({ "Name" : "${var.prefix}-public-subnet" }, var.default_tags)
 }
 
 # Deploy a public subnet
 resource "aws_subnet" "private" {
-  cidr_block = var.private_subnet_cidr
-  vpc_id     = aws_vpc.main.id
-  tags       = merge({ "Name" : "${var.prefix}-private-subnet" }, var.default_tags)
+  cidr_block        = var.private_subnet_cidr
+  vpc_id            = aws_vpc.main.id
+  availability_zone = "${var.region}b"
+  tags              = merge({ "Name" : "${var.prefix}-private-subnet" }, var.default_tags)
 }
 
 # Deploy a Internet Gateway

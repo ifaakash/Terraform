@@ -2,6 +2,7 @@ module "networking" {
   source               = "./networking"
   prefix               = var.prefix
   vpc_cidr             = var.vpc_cidr
+  region               = var.region
   public_subnet_cidr   = var.public_subnet_cidr
   private_subnet_cidr  = var.private_subnet_cidr
   enable_dns_hostnames = var.enable_dns_hostnames

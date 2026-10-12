@@ -10,6 +10,11 @@ variable "vpc_cidr" {
   type        = string
 }
 
+variable "region" {
+  description = "Region placing the subnet"
+  type        = string
+}
+
 variable "public_subnet_cidr" {
   description = "CIDR block for Public subnet"
   type        = string
