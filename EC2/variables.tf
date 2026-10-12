@@ -15,10 +15,10 @@ variable "ami_id" {
   type        = string
 }
 
-variable "availability_zone" {
-  description = "Availabiliye zone in the region for placing the virtual machine"
-  type        = string
-}
+#variable "availability_zone" {
+#  description = "Availabiliye zone in the region for placing the virtual machine"
+#  type        = string
+#}
 
 ##################### IAM #####################
 
