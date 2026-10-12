@@ -20,6 +20,7 @@ variable "ami_id" {
 variable "availability_zone" {
   description = "Availabiliye zone in the region for placing the virtual machine"
   type        = string
+  default = null
 }
 
 ##################### IAM #####################
